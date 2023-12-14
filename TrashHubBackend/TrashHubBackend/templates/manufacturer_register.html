@@ -21,7 +21,7 @@
             <input type="password" name="password" id="pwd" placeholder="Enter your password"> <br>
             <button type='submit' class="btn" onclick="submit()">Register</button>
 
-        <a href="/trashtag/manufacturer/login" class="link">Existing User? Click here to Login!</a>
+        <a href="/ecoperks/manufacturer/login" class="link">Existing User? Click here to Login!</a>
     </div>
     {% for i in range(6) %}
     <br>
@@ -33,7 +33,7 @@
             const name = document.getElementById('name').value;
             const username = document.getElementById('uname').value;
             const password = document.getElementById('pwd').value;
-            const response = await fetch("/trashtag/manufacturer/register", {
+            const response = await fetch("/ecoperks/manufacturer/register", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -46,7 +46,7 @@
             });
             if(response.status === 200){
                console.log('Registered. Redirecting to login');
-               window.location.href = '/trashtag/manufacturer/login';
+               window.location.href = '/ecoperks/manufacturer/login';
             }else{
                 console.error('Unexpected Error Occured. SC: '+response.status);
                 alert('Unexpected Error Occured!');

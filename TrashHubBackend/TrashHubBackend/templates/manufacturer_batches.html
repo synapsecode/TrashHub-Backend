@@ -45,7 +45,7 @@
 <script>
 
     const viewQRSet = (bid) => {
-      window.location.href = `/trashtag/manufacturer/get_batch_qrset/${bid}`
+      window.location.href = `/ecoperks/manufacturer/get_batch_qrset/${bid}`
     }
 
     const createBatch = async () => {
@@ -54,7 +54,7 @@
         const pid = rxz[2]
         console.log(`mid: ${mid} & pid: ${pid}`);
         size = window.prompt('Enter the batch Size', '10')
-        const response = await fetch("/trashtag/manufacturer/create_batch", {
+        const response = await fetch("/ecoperks/manufacturer/create_batch", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -67,7 +67,7 @@
             });
         if(response.status === 200){
             console.log(response.body);
-            window.location.href = `/trashtag/manufacturer/${mid}/products/${pid}/batches`
+            window.location.href = `/ecoperks/manufacturer/${mid}/products/${pid}/batches`
         }else{
             alert('Unexpected Error Occured');
         }

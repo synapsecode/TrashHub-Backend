@@ -20,7 +20,7 @@
             <input type="password" name="password" id="pwd" placeholder="Enter your password"> <br>
             <button type='submit' class="btn" onclick="submit()">Login</button>
 
-        <a href="/trashtag/manufacturer/register" class="link">New User? Click here to Register!</a>
+        <a href="/ecoperks/manufacturer/register" class="link">New User? Click here to Register!</a>
     </div>
     {% for i in range(6) %}
     <br>
@@ -31,7 +31,7 @@
         const submit = async () => {
             const username = document.getElementById('uname').value;
             const password = document.getElementById('pwd').value;
-            const response = await fetch("/trashtag/manufacturer/login", {
+            const response = await fetch("/ecoperks/manufacturer/login", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
@@ -47,7 +47,7 @@
                 if(resp['success']){
                     console.log('Redirecting!');
                     const id = resp['id'];
-                    window.location.href = `/trashtag/manufacturer/${id}`
+                    window.location.href = `/ecoperks/manufacturer/${id}`
                 }else{
                     alert('Incorrect Username or Password');
                 }
