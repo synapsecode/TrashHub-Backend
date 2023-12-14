@@ -1,1 +1,1 @@
-from TrashHubBackend import wsgi
+import wsgi
