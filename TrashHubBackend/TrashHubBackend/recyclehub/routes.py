@@ -1,13 +1,13 @@
 from flask import jsonify, render_template, request, Blueprint
 from TrashHubBackend import db
 from TrashHubBackend.models import RCXJob, RCXPartner, User
-recyclx = Blueprint('recyclx', __name__)
+recyclehub = Blueprint('recyclehub', __name__)
 
-@recyclx.route("/")
-def recyclx_home():
-	return "This is the recyclx module of TrashTraceBackend"
+@recyclehub.route("/")
+def recyclehub_home():
+	return "This is the recyclehub module of TrashTraceBackend"
 
-@recyclx.route("/partner/register", methods=['POST'])
+@recyclehub.route("/partner/register", methods=['POST'])
 def partner_register():
 	data = request.json
 	uname = data['username']
@@ -26,7 +26,7 @@ def partner_register():
 	db.session.commit()
 	return 'Registered!'
 
-@recyclx.route('/partner/login', methods=['POST'])
+@recyclehub.route('/partner/login', methods=['POST'])
 def partner_login():
 	data = request.json
 	if(data == None or data == ''):
@@ -42,7 +42,7 @@ def partner_login():
 		'id': v.id
 	})
 
-@recyclx.route("/partner/<pid>/alljobs")
+@recyclehub.route("/partner/<pid>/alljobs")
 def get_all_jobs(pid):
 	p = RCXPartner.query.filter_by(id=pid).first()
 	if(p == None):
@@ -60,7 +60,7 @@ def get_all_jobs(pid):
 		all_jobs.append(data)
 	return jsonify(all_jobs)
 
-@recyclx.route('/partner/update_job_status', methods=['POST'])
+@recyclehub.route('/partner/update_job_status', methods=['POST'])
 def update_job_status():
 	#TODO: Add Partner Specific Updation Ability
 	data = request.json
@@ -79,7 +79,7 @@ def update_job_status():
 
 # ===================================[ USER ]========================================
 
-@recyclx.route('/getpartners/<flt>')
+@recyclehub.route('/getpartners/<flt>')
 def getpartners(flt):
 	partners = None
 	if(flt == 'all'):
@@ -99,7 +99,7 @@ def getpartners(flt):
 	return jsonify(px)
 
 
-@recyclx.route('/book_job', methods=['POST'])
+@recyclehub.route('/book_job', methods=['POST'])
 def book_job():
 	data = request.json
 	if(data == None or data == ''):
@@ -131,7 +131,7 @@ def book_job():
 		'id': j.id
 	})
 
-@recyclx.route('/myjobs/<uid>')
+@recyclehub.route('/myjobs/<uid>')
 def get_my_jobs(uid):
 	u = User.query.filter_by(id=uid).first()
 	if(u == None):
