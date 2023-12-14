@@ -1,5 +1,5 @@
 from TrashHubBackend import db
-from flask import render_template, request, Blueprint
+from flask import jsonify, render_template, request, Blueprint
 from TrashHubBackend.models import (ProductBatch, ProductEntity,
 				       TrashTagManufacturer, TrashTagProduct, 
 					   TrashTagVendor, User)
