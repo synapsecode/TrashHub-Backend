@@ -12,3 +12,4 @@ class Config:
 	PRODUCTION_MODE = False #This states whether the app runs in DEBUG MODE or not
 	PORT_NUMBER = 8080
 	HOST_NAME = 'localhost'
+	UPLOAD_FOLDER = 'static'

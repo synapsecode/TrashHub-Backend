@@ -2,6 +2,8 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from TrashHubBackend.config import Config
 from flask_cors import CORS
+from flask_qrcode import QRcode
+
 
 db = SQLAlchemy()
 
@@ -10,6 +12,8 @@ def create_app(config_class=Config):
 	app.config.from_object(Config)
 	db.init_app(app)
 	CORS(app)
+	QRcode(app)
+	app._static_folder = Config().UPLOAD_FOLDER
 
 	#Import all your blueprints
 	from TrashHubBackend.main.routes import main
